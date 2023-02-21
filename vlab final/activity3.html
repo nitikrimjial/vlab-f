@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Drag-and-Drop Example</title>
+    <link rel="stylesheet" href="css/act3.css" />
+  </head>
+  <body>
+    <script src="javascript/new.js"></script>
+    <script type="text/javascript">
+
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+    
+        function drag(ev){
+            ev.dataTransfer.setData("content", ev.target.id);
+        }
+
+        function drop(ev){
+    ev.preventDefault();
+    var image= ev.dataTransfer.getData("content");
+    if ( image == ev.target.id) {
+           ev.target.appendChild(document.getElementById(image));
+    }
+    else {
+
+    }
+                  }
+    </script>
+    
+    <section id="planetbox">
+        <img id="mercuryImg" draggable="true" ondragstart="drag(event)" src="images2/objective-removebg.png" width="100px">
+    </section>
+    
+    <section id="mercurybox"ondrop="drop(event)" ondragover="allowDrop(event)"> </section>
+  </body>
+</html>
